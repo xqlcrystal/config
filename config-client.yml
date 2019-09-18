@@ -1,5 +1,9 @@
-info:
-  profile: default
-  from: git1
-  
-test: bbb
+spring:
+  application:
+    name: igo-cloud-basedata
+  profiles:
+    active: dev
+  messages:
+    basename: i18n/message
+    cache-second: 3600
+    encoding: UTF-8
