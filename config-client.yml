@@ -1,6 +1,4 @@
-spring:
-  application:
-    name: igo-cloud-basedata
+spring: 
   profiles:
     active: dev
   messages:
