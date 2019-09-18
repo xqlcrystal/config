@@ -7,3 +7,8 @@ spring:
     basename: i18n/message
     cache-second: 3600
     encoding: UTF-8
+spring:
+  datasource:
+    url: jdbc:mysql://10.24.20.117:3306/igo_basedata?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
+    username: root
+    password: root
