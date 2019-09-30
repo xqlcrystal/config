@@ -1,12 +1,57 @@
 spring:
-  profiles:
-    active: dev
+  application:
+    name: igo-cloud-basedata
+  messages:
+    basename: i18n/message
+    cache-second: 3600
+    encoding: UTF-8
   datasource:
     url: jdbc:mysql://10.24.20.117:3306/igo_basedata?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    host: 10.24.20.116
+    database: 0
+    port: 6379
+    jedis:
+      pool:
+        max-active: 200
+        max-idle: 10
+        min-idle: 0
+        max-wait: -1ms
+    timeout: 1000ms
+    password: Abcd@1234
+server:
+  port: 8080
 eureka:
   client:
     service-url:
       defaultZone: http://10.24.20.116:8761/eureka/
+    register-with-eureka: false
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
+swagger2:
+  apiInfo:
+    description: igo-基础数据
+    basePackage: com.inspur.igo.cloud.basedata.controller
+
