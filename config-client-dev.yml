@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: igo-cloud-basedata
   messages:
     basename: i18n/message
     cache-second: 3600
